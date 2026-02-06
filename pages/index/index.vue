@@ -39,7 +39,18 @@
     <!-- 推荐区 -->
     <view class="select">
       <!-- 自定义组件 -->
-      <common-title></common-title>
+      <common-title>
+        <template #name>每日推荐</template>
+        <template #custom>
+          <view class="date">
+            <uni-icons type="calendar" size="18" color="#2DB38E"></uni-icons>
+            <view class="text">
+              <!-- uni-dateformat 日期格式化：安装 -->
+              <uni-dateformat :date="Date.now()" format="dd日"></uni-dateformat>
+            </view>
+          </view>
+        </template>
+      </common-title>
       <view class="content">
         <!-- 横向左右滑动：①scroll-x ②父级不让换行 ③image行级块 -->
         <scroll-view scroll-x>
@@ -49,6 +60,19 @@
               mode="aspectFill"></image>
           </view>
         </scroll-view>
+      </view>
+    </view>
+
+    <view class="theme">
+      <common-title>
+        <template #name>专题精选</template>
+        <template #custom>
+          <navigator url="" class="more">More+</navigator>
+        </template>
+      </common-title>
+
+      <view class="content">
+        <theme-item v-for="item in 8"></theme-item>
       </view>
     </view>
   </view>
@@ -121,7 +145,6 @@
       justify-content: center;
     }
   }
-
   .select {
     padding-top: 50rpx;
     .content {
@@ -146,6 +169,25 @@
           margin-right: 30rpx;
         }
       }
+    }
+    .date {
+      color: #2db38e;
+      display: flex;
+      align-items: center;
+      .text {
+        margin-left: 5rpx;
+      }
+    }
+  }
+  .theme {
+    padding-top: 50rpx;
+    .more {
+      font-size: 32rpx;
+      color: #999;
+    }
+    .content {
+      margin-top: 30rpx;
+      padding: 0 30rpx;
     }
   }
 }

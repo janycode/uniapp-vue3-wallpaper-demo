@@ -1,0 +1,90 @@
+# ===================== 【UniApp 核心编译产物（必滤）】=====================
+# HBuilderX 编译生成的多端产物（小程序/APP/H5/快应用等）
+unpackage/
+# Vue3 编译临时文件（若用 Vite 构建）
+dist/
+build/
+# 热更新临时文件
+hot-update.js
+hot-update.json
+
+# ===================== 【前端依赖/包管理（必滤）】=====================
+# npm/yarn/pnpm 依赖包（体积大，通过 package.json 安装即可）
+node_modules/
+# 包管理锁文件（可选过滤：团队统一版本可保留，避免版本冲突则过滤）
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+# 私有依赖/本地链接包
+*.tgz
+node_modules/.pnpm/
+
+# ===================== 【编辑器/IDE 配置（必滤）】=====================
+# HBuilderX 配置/缓存
+.idea/
+.project
+.settings/
+.local/
+.log/
+*.log
+*.swp
+*.swo
+*.bak
+# VSCode 配置
+.vscode/
+*.code-workspace
+# 系统临时文件
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ===================== 【环境变量/敏感配置（必滤）】=====================
+# 环境变量文件（含接口地址、密钥等敏感信息）
+.env
+.env.*
+!.env.example  # 保留环境变量示例文件（若有，供团队参考）
+# 私钥/证书（APP 打包用，严禁上传）
+*.jks
+*.keystore
+*.p12
+*.pfx
+# 小程序密钥/配置
+private.*.key
+wechat_key.json
+alipay_key.json
+
+# ===================== 【APP 打包专属（必滤）】=====================
+# 安卓/iOS 原生工程文件
+android/
+ios/
+platforms/
+# APP 打包临时资源
+res/
+build-tools/
+# 安装包产物
+*.apk
+*.ipa
+*.aab
+
+# ===================== 【Vue3 专属（可选滤）】=====================
+# Vue3 类型声明临时文件
+*.d.ts
+!.d.ts  # 保留手动编写的类型声明文件
+# Vite 缓存
+node_modules/.vite/
+# TypeScript 编译缓存
+tsconfig.tsbuildinfo
+
+# ===================== 【测试/临时文件（必滤）】=====================
+# 本地测试文件
+test/
+demo/
+temp/
+# 压缩包/日志
+*.zip
+*.rar
+*.7z
+*.log
+# 个人调试文件
+debug.js
+test.vue

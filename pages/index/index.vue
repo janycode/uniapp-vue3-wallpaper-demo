@@ -104,6 +104,7 @@
       }
     }
   }
+
   .notice {
     width: 690rpx;
     height: 80rpx;
@@ -112,21 +113,26 @@
     margin: 0 auto;
     border-radius: 80rpx;
     display: flex;
+
     .left {
       width: 140rpx;
       display: flex;
       align-items: center;
       justify-content: center;
+
       .text {
         color: #2db38e;
         font-weight: 600;
         font-size: 28rpx;
       }
     }
+
     .center {
       flex: 1; //中间占满，左右两侧设置好宽度即可
+
       swiper {
         height: 100%; //继承父级
+
         &-item {
           height: 100%;
           font-size: 30rpx;
@@ -138,6 +144,7 @@
         }
       }
     }
+
     .right {
       width: 70rpx;
       display: flex;
@@ -145,49 +152,64 @@
       justify-content: center;
     }
   }
+
   .select {
     padding-top: 50rpx;
+
     .content {
       width: 720rpx; //右侧可以贴边
       margin-left: 30rpx;
       margin-top: 30rpx;
+
       scroll-view {
         white-space: nowrap; //不换行
+
         .box {
           width: 200rpx;
           height: 445rpx;
           display: inline-block;
           margin-right: 15rpx;
+
           image {
             width: 100%;
             height: 100%;
             border-radius: 10rpx;
           }
         }
+
         .box:last-child {
           //让最后一个显示与全局一样的右侧宽度间距
           margin-right: 30rpx;
         }
       }
     }
+
     .date {
       color: #2db38e;
       display: flex;
       align-items: center;
+
       .text {
         margin-left: 5rpx;
       }
     }
   }
+
   .theme {
     padding-top: 50rpx;
+
     .more {
       font-size: 32rpx;
       color: #999;
     }
+
     .content {
       margin-top: 30rpx;
       padding: 0 30rpx;
+      // 网格布局
+      display: grid;
+      gap: 15rpx;
+      grid-template-columns: repeat(3, 1fr); //每行3个
     }
   }
 }

@@ -1,5 +1,6 @@
 <template>
   <view class="homeLayout">
+    <!-- banner区 -->
     <view class="banner">
       <!-- 轮播图-左右滚动：指示器、衔接、自动播放 -->
       <swiper
@@ -16,6 +17,7 @@
       </swiper>
     </view>
 
+    <!-- 公告区 -->
     <view class="notice">
       <!-- uni-icons 图标：安装 和 使用、重启项目 -->
       <view class="left">
@@ -31,6 +33,22 @@
       </view>
       <view class="right">
         <uni-icons type="right" size="20" color="#2DB38E"></uni-icons>
+      </view>
+    </view>
+
+    <!-- 推荐区 -->
+    <view class="select">
+      <!-- 自定义组件 -->
+      <common-title></common-title>
+      <view class="content">
+        <!-- 横向左右滑动：①scroll-x ②父级不让换行 ③image行级块 -->
+        <scroll-view scroll-x>
+          <view class="box" v-for="item in 8">
+            <image
+              src="/common/images/wallpaper/preview_small.webp"
+              mode="aspectFill"></image>
+          </view>
+        </scroll-view>
       </view>
     </view>
   </view>
@@ -101,6 +119,33 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+
+  .select {
+    padding-top: 50rpx;
+    .content {
+      width: 720rpx; //右侧可以贴边
+      margin-left: 30rpx;
+      margin-top: 30rpx;
+      scroll-view {
+        white-space: nowrap; //不换行
+        .box {
+          width: 200rpx;
+          height: 445rpx;
+          display: inline-block;
+          margin-right: 15rpx;
+          image {
+            width: 100%;
+            height: 100%;
+            border-radius: 10rpx;
+          }
+        }
+        .box:last-child {
+          //让最后一个显示与全局一样的右侧宽度间距
+          margin-right: 30rpx;
+        }
+      }
     }
   }
 }

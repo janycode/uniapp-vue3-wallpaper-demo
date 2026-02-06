@@ -37,6 +37,7 @@ node_modules/.pnpm/
 .DS_Store
 Thumbs.db
 ehthumbs.db
+uni_modules/
 
 # ===================== 【环境变量/敏感配置（必滤）】=====================
 # 环境变量文件（含接口地址、密钥等敏感信息）

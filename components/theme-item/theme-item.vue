@@ -1,6 +1,7 @@
 <template>
   <view class="themeItem">
-    <navigator url="" class="box">
+    <!-- 前8个 -->
+    <navigator url="" class="box" v-if="!isMore">
       <image
         class="pic"
         src="/common/images/wallpaper/classify1.jpg"
@@ -8,10 +9,29 @@
       <view class="mask">明星美女</view>
       <view class="tab">3天前更新</view>
     </navigator>
+    <!-- 第9个：更多 -->
+    <navigator url="" class="box more" v-if="isMore">
+      <image
+        class="pic"
+        src="/common/images/wallpaper/more.jpg"
+        mode="aspectFill"></image>
+      <view class="mask">
+        <uni-icons type="more-filled" size="34" color="#fff"></uni-icons>
+        <view class="text">更多</view>
+      </view>
+    </navigator>
   </view>
 </template>
 
-<script setup></script>
+<script setup>
+//接收父类传值
+defineProps({
+  isMore: {
+    type: Boolean,
+    default: false,
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .themeItem {
@@ -50,6 +70,18 @@
       font-size: 22rpx; //字体最小12px，因此不能设置到小于24rpx
       transform: scale(0.8); //此时使用缩放可以对字体进行缩小
       transform-origin: left top; //以左上角为基准缩小
+    }
+  }
+  .box.more {
+    .mask {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; //垂直居中
+    }
+    .text {
+      font-size: 28rpx;
     }
   }
 }

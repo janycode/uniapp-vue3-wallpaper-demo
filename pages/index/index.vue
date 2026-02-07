@@ -68,7 +68,8 @@
       </common-title>
 
       <view class="content">
-        <theme-item v-for="item in 8"></theme-item>
+        <!-- 传给自定义组件 item 属性，值是 item对象 -->
+        <theme-item v-for="item in classifyList" :key="item._id" :item="item"></theme-item>
         <theme-item :isMore="true"></theme-item>
       </view>
     </view>
@@ -100,6 +101,13 @@
     noticeList.value = res.data
   }
 
+  // 获取专题精选
+  const classifyList = ref([])
+  const getClassify = async () => {
+    let res = await apiGetClassify({ pageSize: 3, select: true })
+    classifyList.value = res.data
+  }
+
   const goPreview = () => {
     uni.navigateTo({ url: '/pages/preview/preview' })
   }
@@ -107,6 +115,7 @@
   getBanner()
   getDayRandom()
   getNotice()
+  getClassify()
 </script>
 
 <style lang="scss" scoped>

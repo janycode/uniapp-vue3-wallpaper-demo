@@ -8,10 +8,14 @@ export function apiGetDayRandom() {
   return request({ url: '/randomWall' })
 }
 
-export function apiGetNotice(data = {}) {
+export function apiGetNotice(data) {
   return request({
     url: '/wallNewsList',
     method: 'post',
     data
   })
+}
+
+export function apiGetClassify(data) {
+  return request({ url: '/classify', data })
 }

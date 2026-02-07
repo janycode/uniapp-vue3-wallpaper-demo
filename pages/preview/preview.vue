@@ -8,8 +8,8 @@
 
     <!-- 遮罩层 -->
     <view class="mask" v-if="maskState">
-      <view class="goBack">
-        图标
+      <view class="goBack" :style="{top: getStatusBarHeight() + 'px'}" @click="goBack">
+        <uni-icons type="back" color="#fff" size="20"></uni-icons>
       </view>
       <view class="count">
         3 / 9
@@ -124,6 +124,7 @@
 
 <script setup>
   import { ref } from 'vue'
+  import { getStatusBarHeight } from '@/utils/system.js'
 
   // 点击信息底部弹出框遮罩状态
   const infoPopup = ref(null)
@@ -152,6 +153,11 @@
   const maskState = ref(true)
   const maskChange = () => {
     maskState.value = !maskState.value
+  }
+  
+  // 返回上一页
+  const goBack = () => {
+    uni.navigateBack()
   }
 </script>
 
@@ -183,7 +189,20 @@
         color: #fff;
       }
 
-      .goBack {}
+      .goBack {
+        width: 38px;
+        height: 38px;
+        background: rgba(0, 0, 0, 0.5);
+        left: 30rpx;
+        margin-left: 0;
+        top: 0;
+        border-radius: 100rpx;
+        backdrop-filter: blur(10rpx);
+        border: 1rpx solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       .count {
         top: 10vh;

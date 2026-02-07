@@ -4,7 +4,7 @@
       <!-- 需要使用动态绑定 style 的 height 高度，设置头部高度 -->
       <view class="statusBar" :style="{height: getStatusBarHeight() + 'px'}"></view>
       <view class="titleBar" :style="{height: getTitleBarHeight() + 'px', marginLeft: getLeftIcon() + 'px'}">
-        <view class="title">标题</view>
+        <view class="title">{{title}}</view>
         <view class="search">
           <uni-icons class="icon" type="search" color="#888" size="18"></uni-icons>
           <text class="text">搜索</text>
@@ -20,6 +20,12 @@
 <script setup>
   import { computed, ref } from 'vue'
   import { getStatusBarHeight, getTitleBarHeight, getNavBarHeight, getLeftIcon } from '@/utils/system.js'
+  defineProps({
+    title: {
+      type: String,
+      default: '壁纸'
+    }
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -33,14 +39,14 @@
       background: linear-gradient(to bottom, transparent 0, #fff 400rpx), linear-gradient(to right, #beecd8 20%, #F4E2D8);
 
       .statusBar {
-        border: 1px solid red;
+        // border: 1px solid red;
       }
 
       .titleBar {
         display: flex;
         align-items: center;
         padding: 0 30rpx;
-        border: 1px solid green;
+        // border: 1px solid green;
 
         .title {
           font-size: 22px;

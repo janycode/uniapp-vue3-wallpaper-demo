@@ -34,6 +34,18 @@
         "navigationBarTitleText": "预览",
         "navigationStyle": "custom"
       }
+    },
+    {
+      "path": "pages/notice/notice",
+      "style": {
+        "navigationBarTitleText": "公告"
+      }
+    },
+    {
+      "path": "pages/notice/detail",
+      "style": {
+        "navigationBarTitleText": "详情"
+      }
     }
   ],
   "globalStyle": {

@@ -10,16 +10,23 @@
     </view>
     <view class="section">
       <view class="list">
-        <view class="row" v-for="item in sectionList.slice(0, 3)" key="item.iconType">
+        <view class="row" v-for="(item, index) in sectionList.slice(0, 3)" key="item.iconType">
           <view class="left">
             <uni-icons :type="item.iconType" size="20" color="#28b389"></uni-icons>
             <view class="text">{{ item.text }}</view>
           </view>
           <view class="right">
-            <view class="text">22</view>
+            <view class="text" v-if="index !== 2">22</view>
             <uni-icons type="right" size="15" color="#aaa"></uni-icons>
           </view>
         </view>
+        <!-- 条件编译：小程序(MP)出现联系客服，其他出现拨打电话 -->
+        <!-- #ifdef MP -->
+        <button open-type="contact">联系客服</button>
+        <!-- #endif -->
+        <!-- #ifndef MP -->
+        <button @click="clickContact">拨打电话</button>
+        <!-- #endif -->
       </view>
     </view>
     <view class="section">
@@ -30,12 +37,13 @@
             <view class="text">{{ item.text }}</view>
           </view>
           <view class="right">
-            <view class="text">22</view>
             <uni-icons type="right" size="15" color="#aaa"></uni-icons>
           </view>
         </view>
       </view>
     </view>
+
+
   </view>
 </template>
 
@@ -65,6 +73,13 @@
       text: "常见问题",
     },
   ]);
+  
+  // 拨打电话
+  const clickContact = () => {
+    uni.makePhoneCall({
+    	phoneNumber: '114' //仅为示例
+    });
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -108,6 +123,8 @@
       box-shadow: 0 0 30rpx rgba(0, 0, 0, 0.05);
 
       .list {
+        position: relative;
+
         .row {
           display: flex;
           justify-content: space-between;
@@ -140,6 +157,15 @@
               color: #666;
             }
           }
+        }
+
+        button {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          width: 100%;
+          height: 100rpx;
+          opacity: 0; //完全透明，按钮盖在联系客服上
         }
       }
     }

@@ -1,5 +1,7 @@
 <template>
   <view class="homeLayout pageBg">
+    <!-- 公共自定义头部组件 -->
+    <custom-nav-bar></custom-nav-bar>
     <!-- banner区 -->
     <view class="banner">
       <!-- 轮播图-左右滚动：指示器、衔接、自动播放 -->

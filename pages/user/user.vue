@@ -10,7 +10,7 @@
     </view>
     <view class="section">
       <view class="list">
-        <view class="row" v-for="(item, index) in sectionList.slice(0, 3)" key="item.iconType">
+        <view class="row" v-for="(item, index) in sectionList.slice(0, 3)" key="item.iconType" @click="clickRow(index)">
           <view class="left">
             <uni-icons :type="item.iconType" size="20"></uni-icons>
             <view class="text">{{ item.text }}</view>
@@ -55,30 +55,44 @@
   const sectionList = ref([{
       iconType: "download-filled",
       text: "我的下载",
+      url: "/pages/calsslist/calsslist"
     },
     {
       iconType: "star-filled",
       text: "我的评分",
+      url: ""
     },
     {
       iconType: "chat-filled",
       text: "联系客服",
+      url: ""
     },
     {
       iconType: "notification-filled",
       text: "订阅更新",
+      url: ""
     },
     {
       iconType: "help-filled",
       text: "常见问题",
+      url: ""
     },
   ]);
-  
+
   // 拨打电话
   const clickContact = () => {
     uni.makePhoneCall({
-    	phoneNumber: '114' //仅为示例
+      phoneNumber: '114' //仅为示例
     });
+  }
+
+  // 点击一行的事件
+  const clickRow = (index) => {
+    console.log(index)
+    let url = sectionList.value[index].url
+    url && uni.navigateTo({
+      url
+    })
   }
 </script>
 
@@ -133,6 +147,7 @@
           height: 100rpx;
           border-bottom: 1px solid #eee;
           background-color: white;
+
           &:last-child {
             border-bottom: 0;
           }
@@ -146,7 +161,7 @@
               font-size: 28rpx;
               color: #666;
             }
-            
+
             //样式穿透到组件内部
             :deep(.uni-icons) {
               color: $brand-theme-color !important;

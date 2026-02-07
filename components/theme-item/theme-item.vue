@@ -1,7 +1,7 @@
 <template>
   <view class="themeItem">
     <!-- 前8个 -->
-    <navigator url="" class="box" v-if="!isMore">
+    <navigator url="/pages/calsslist/calsslist" class="box" v-if="!isMore">
       <image
         class="pic"
         src="/common/images/wallpaper/classify1.jpg"
@@ -9,8 +9,8 @@
       <view class="mask">明星美女</view>
       <view class="tab">3天前更新</view>
     </navigator>
-    <!-- 第9个：更多 -->
-    <navigator url="" class="box more" v-if="isMore">
+    <!-- 第9个：更多，reLaunch 才能跳转 tabBar -->
+    <navigator url="/pages/classify/classify" open-type="reLaunch" class="box more" v-if="isMore">
       <image
         class="pic"
         src="/common/images/wallpaper/more.jpg"

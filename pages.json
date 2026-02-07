@@ -4,19 +4,28 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "推荐"
+        "navigationBarTitleText": "推荐",
+        "navigationStyle": "custom" //自定义头部，头部通屏
       }
     },
     {
       "path": "pages/classify/classify",
       "style": {
-        "navigationBarTitleText": "分类"
+        "navigationBarTitleText": "分类",
+        "navigationStyle": "custom" //自定义头部，头部通屏
       }
     },
     {
       "path": "pages/user/user",
       "style": {
-        "navigationBarTitleText": "我的"
+        "navigationBarTitleText": "我的",
+        "navigationStyle": "custom" //自定义头部，头部通屏
+      }
+    },
+    {
+      "path": "pages/calsslist/calsslist",
+      "style": {
+        "navigationBarTitleText": "分类列表"
       }
     }
   ],

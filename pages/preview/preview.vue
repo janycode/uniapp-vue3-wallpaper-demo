@@ -27,7 +27,7 @@
             信息
           </view>
         </view>
-        <view class="box">
+        <view class="box" @click="clickScore">
           <uni-icons type="star" size="28"></uni-icons>
           <view class="text">
             5分
@@ -73,7 +73,7 @@
                 <view class="label">评分：</view>
                 <view class="value rateBox">
                   <!-- 评分的星星效果 -->
-                  <uni-rate v-model="value" @change="onChange" readonly touchable value="3.5" size="16"/>
+                  <uni-rate readonly touchable value="3.5" size="16"/>
                   <text class="score">5分</text>
                 </view>
               </view>
@@ -94,6 +94,30 @@
           </scroll-view>
       </view>
     </uni-popup>
+    
+    <!-- 评分弹窗 -->
+    <uni-popup ref="scorePopup" >
+      <view class="scorePopup">
+        <view class="popHeader">
+          <view></view>
+          <view class="title">
+            壁纸评分
+          </view>
+          <view class="close" @click="clickScoreClose">
+            <uni-icons type="closeempty" size="18" color="#999"></uni-icons>
+          </view>
+        </view>
+        
+        <view class="content">
+          <uni-rate v-model="userScore" allow-half/>
+          <text class="text">{{userScore}}分</text>
+        </view>
+        <view class="footer">
+          <!-- plain 空心 -->
+          <button @click="submit" :disabled="!userScore" type="default" size="mini" plain>确认评分</button>
+        </view>
+      </view>
+    </uni-popup>
 
   </view>
 </template>
@@ -108,6 +132,20 @@
   }
   const clickInfoClose = () => {
     infoPopup.value.close()
+  }
+  
+  // 评分弹窗
+  const scorePopup = ref(null)
+  const userScore = ref(0)
+  const clickScore = () => {
+    scorePopup.value.open()
+  }
+  const clickScoreClose = () => {
+    scorePopup.value.close()
+  }
+  // 确认评分
+  const submit = () => {
+    console.log('评分了：', userScore.value)
   }
 
   // 遮罩层状态
@@ -198,23 +236,25 @@
       }
     }
     
+    .popHeader {
+      display: flex;
+      justify-content: space-between; //头部：空盒子 + 壁纸信息 + 关闭按钮，空盒子是技巧
+      align-items: center;
+      .title {
+        color: $text-font-color-2;
+        font-size: 26rpx;
+      }
+      .close {
+        padding: 6rpx; //增加手指可点击区域
+      }
+    }
+    
     .infoPopup{
       background: #fff;
       padding: 30rpx;
       border-radius: 30rpx 30rpx 0 0;
       overflow: hidden;
-      .popHeader {
-        display: flex;
-        justify-content: space-between; //头部：空盒子 + 壁纸信息 + 关闭按钮，空盒子是技巧
-        align-items: center;
-        .title {
-          color: $text-font-color-2;
-          font-size: 26rpx;
-        }
-        .close {
-          padding: 6rpx; //增加手指可点击区域
-        }
-      }
+
       scroll-view {
         max-height: 60vh;
         .content {
@@ -269,6 +309,32 @@
             line-height: 1.6em;
           }
        }
+      }
+    }
+  
+    .scorePopup {
+      background: #fff;
+      padding: 30rpx;
+      width: 70vw;
+      border-radius: 30rpx;
+      .content {
+        padding: 30rpx 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .text{
+          color: #FFCA3E;
+          padding-left: 10rpx;
+          width: 80rpx;
+          line-height: 1em;
+          text-align: right;
+        }
+      }
+      .footer {
+        padding: 10rpx 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
     }
   }

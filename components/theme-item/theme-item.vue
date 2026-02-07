@@ -1,7 +1,7 @@
 <template>
   <view class="themeItem">
     <!-- 前8个 -->
-    <navigator url="/pages/calsslist/calsslist" class="box" v-if="!isMore">
+    <navigator :url="`/pages/calsslist/calsslist?id=111&name=jerry`" class="box" v-if="!isMore">
       <image class="pic" :src="item.picurl" mode="aspectFill"></image>
       <view class="mask">{{item.name}}</view>
       <view class="tab">{{formatTimeDiff(item.updateTime)}}前更新</view>

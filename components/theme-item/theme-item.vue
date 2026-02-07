@@ -4,7 +4,7 @@
     <navigator url="/pages/calsslist/calsslist" class="box" v-if="!isMore">
       <image class="pic" :src="item.picurl" mode="aspectFill"></image>
       <view class="mask">{{item.name}}</view>
-      <view class="tab">{{item.updateTime}}前更新</view>
+      <view class="tab">{{formatTimeDiff(item.updateTime)}}前更新</view>
     </navigator>
     <!-- 第9个：更多，reLaunch 才能跳转 tabBar -->
     <navigator url="/pages/classify/classify" open-type="reLaunch" class="box more" v-if="isMore">
@@ -18,6 +18,8 @@
 </template>
 
 <script setup>
+import formatTimeDiff from '../../utils/common'
+
   //接收父类传值
   defineProps({
     isMore: {

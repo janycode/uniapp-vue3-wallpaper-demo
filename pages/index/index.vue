@@ -7,8 +7,9 @@
       <!-- 轮播图-左右滚动：指示器、衔接、自动播放 -->
       <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular
         :autoplay="true" :interval="3000" :duration="1000">
-        <swiper-item v-for="item in bannerList" :key="item._id">
-          <image :src="item.picurl" mode="aspectFill"></image>
+        <!-- <swiper-item v-for="item in bannerList" :key="item._id"> -->
+        <swiper-item v-for="item in 8" :key="item._id">
+          <image src="/common/images/wallpaper/banner1.jpg" mode="aspectFill"></image>
         </swiper-item>
       </swiper>
     </view>
@@ -22,9 +23,11 @@
       </view>
       <view class="center">
         <swiper vertical :autoplay="true" :interval="1500" :duration="300">
-          <swiper-item v-for="item in noticeList" :key="item._id">
+          <!-- <swiper-item v-for="item in noticeList" :key="item._id"> -->
+          <swiper-item v-for="item in 8">
             <navigator url="/pages/notice/detail">
-              {{item.title}}
+              <!-- {{item.title}} -->
+              这里是一篇公告内容！！！
             </navigator>
           </swiper-item>
         </swiper>
@@ -52,8 +55,10 @@
       <view class="content">
         <!-- 横向左右滑动：①scroll-x ②父级不让换行 ③image行级块 -->
         <scroll-view scroll-x>
-          <view class="box" v-for="item in randomList" :key="item._id" @click="goPreview">
-            <image :src="item.smallPicurl" mode="aspectFill"></image>
+          <!-- <view class="box" v-for="item in randomList" :key="item._id" @click="goPreview"> -->
+          <view class="box" v-for="(item, index) in 8" :key="index" @click="goPreview">
+            <!-- <image :src="item.smallPicurl" mode="aspectFill"></image> -->
+            <image src="/common/images/wallpaper/preview_small.webp" mode="aspectFill"></image>
           </view>
         </scroll-view>
       </view>
@@ -69,7 +74,8 @@
 
       <view class="content">
         <!-- 传给自定义组件 item 属性，值是 item对象 -->
-        <theme-item v-for="item in classifyList" :key="item._id" :item="item"></theme-item>
+        <!-- <theme-item v-for="item in classifyList" :key="item._id" :item="item"></theme-item> -->
+        <theme-item v-for="(item, index) in 8" :key="index"></theme-item>
         <theme-item :isMore="true"></theme-item>
       </view>
     </view>
@@ -112,10 +118,10 @@
     uni.navigateTo({ url: '/pages/preview/preview' })
   }
 
-  getBanner()
-  getDayRandom()
-  getNotice()
-  getClassify()
+  // getBanner()
+  // getDayRandom()
+  // getNotice()
+  // getClassify()
 </script>
 
 <style lang="scss" scoped>

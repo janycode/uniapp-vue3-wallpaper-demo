@@ -23,6 +23,7 @@ export function request(config = {}) {
             showCancel: false
           })
           reject(res.data)
+        // } else if (res.data.errCode === 500) {   //扩展其他状态码的单独处理分支
         } else {
           uni.showToast({
             title: res.data.errMsg,

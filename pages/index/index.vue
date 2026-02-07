@@ -78,44 +78,26 @@
 <script setup>
   import { ref } from 'vue'
   import { onReady } from '@dcloudio/uni-app'
+  import { apiGetBanner, apiGetDayRandom, apiGetNotice } from '../../api/apis'
   // 获取banner图片列表
   const bannerList = ref([])
   const getBanner = async () => {
-    let res = await uni.request({
-      url: 'https://tea.qingnian8.com/api/bizhi/homeBanner',
-      header: { 'access-key': '' }
-    })
-    console.log(res.data)
-    if (res.data.errCode === 0) {
-      bannerList.value = res.data.data
-    }
+    let res = await apiGetBanner()
+    bannerList.value = res.data
   }
 
   // 随机9张壁纸
   const randomList = ref([])
   const getDayRandom = async () => {
-    let res = await uni.request({
-      url: 'https://tea.qingnian8.com/api/bizhi/randomWall',
-      header: { 'access-key': '' }
-    })
-    console.log(res.data)
-    if (res.data.errCode === 0) {
-      randomList.value = res.data.data
-    }
+    let res = await apiGetDayRandom()
+    randomList.value = res.data
   }
 
   // 获取公告列表
   const noticeList = ref([])
   const getNotice = async () => {
-    let res = await uni.request({
-      url: 'https://tea.qingnian8.com/api/bizhi/wallNewsList',
-      header: { 'access-key': '' },
-      data: { select: true, pageSize: 3 }
-    })
-    console.log(res.data)
-    if (res.data.errCode === 0) {
-      noticeList.value = res.data.data
-    }
+    let res = await apiGetNotice({ select: true })
+    noticeList.value = res.data
   }
 
   const goPreview = () => {

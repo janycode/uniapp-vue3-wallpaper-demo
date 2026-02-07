@@ -1,5 +1,5 @@
 <template>
-  <view class="homeLayout">
+  <view class="homeLayout pageBg">
     <!-- banner区 -->
     <view class="banner">
       <!-- 轮播图-左右滚动：指示器、衔接、自动播放 -->
@@ -21,7 +21,7 @@
     <view class="notice">
       <!-- uni-icons 图标：安装 和 使用、重启项目 -->
       <view class="left">
-        <uni-icons type="sound-filled" size="20" color="#2DB38E"></uni-icons>
+        <uni-icons type="sound-filled" size="20"></uni-icons>
         <text class="text">公告</text>
       </view>
       <view class="center">
@@ -32,7 +32,7 @@
         </swiper>
       </view>
       <view class="right">
-        <uni-icons type="right" size="20" color="#2DB38E"></uni-icons>
+        <uni-icons type="right" size="20"></uni-icons>
       </view>
     </view>
 
@@ -43,7 +43,7 @@
         <template #name>每日推荐</template>
         <template #custom>
           <view class="date">
-            <uni-icons type="calendar" size="18" color="#2DB38E"></uni-icons>
+            <uni-icons type="calendar" size="18"></uni-icons>
             <view class="text">
               <!-- uni-dateformat 日期格式化：安装 -->
               <uni-dateformat :date="Date.now()" format="dd日"></uni-dateformat>
@@ -120,9 +120,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      //样式穿透到组件内部
+      :deep(.uni-icons) {
+        color: $brand-theme-color !important;
+      }
 
       .text {
-        color: #2db38e;
+        color: $brand-theme-color;
         font-weight: 600;
         font-size: 28rpx;
       }
@@ -151,6 +155,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      
+      //样式穿透到组件内部
+      :deep(.uni-icons) {
+        color: $brand-theme-color !important;
+      }
     }
   }
 
@@ -186,12 +195,17 @@
     }
 
     .date {
-      color: #2db38e;
+      color: $brand-theme-color;
       display: flex;
       align-items: center;
 
       .text {
         margin-left: 5rpx;
+      }
+      
+      //样式穿透到组件内部
+      :deep(.uni-icons) {
+        color: $brand-theme-color !important;
       }
     }
   }

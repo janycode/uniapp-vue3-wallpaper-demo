@@ -1,5 +1,5 @@
 <template>
-  <view class="userLayout">
+  <view class="userLayout pageBg">
     <view class="userInfo">
       <!-- 头像 -->
       <view class="avatar">
@@ -12,7 +12,7 @@
       <view class="list">
         <view class="row" v-for="(item, index) in sectionList.slice(0, 3)" key="item.iconType">
           <view class="left">
-            <uni-icons :type="item.iconType" size="20" color="#28b389"></uni-icons>
+            <uni-icons :type="item.iconType" size="20"></uni-icons>
             <view class="text">{{ item.text }}</view>
           </view>
           <view class="right">
@@ -33,7 +33,7 @@
       <view class="list">
         <view class="row" v-for="item in sectionList.slice(3, 5)" key="item.iconType">
           <view class="left">
-            <uni-icons :type="item.iconType" size="20" color="#28b389"></uni-icons>
+            <uni-icons :type="item.iconType" size="20"></uni-icons>
             <view class="text">{{ item.text }}</view>
           </view>
           <view class="right">
@@ -132,7 +132,7 @@
           padding: 0 30px;
           height: 100rpx;
           border-bottom: 1px solid #eee;
-
+          background-color: white;
           &:last-child {
             border-bottom: 0;
           }
@@ -145,6 +145,11 @@
               padding-left: 20rpx;
               font-size: 28rpx;
               color: #666;
+            }
+            
+            //样式穿透到组件内部
+            :deep(.uni-icons) {
+              color: $brand-theme-color !important;
             }
           }
 
